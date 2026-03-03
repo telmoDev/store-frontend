@@ -145,7 +145,7 @@ onMounted(() => {
 }
 
 .search-box input {
-    width: 100%;
+    width: 85%;
 }
 
 .products-grid {
