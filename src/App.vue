@@ -14,7 +14,6 @@ const cartStore = useCartStore()
     <nav class="nav-links">
       <RouterLink to="/">Productos</RouterLink>
       <RouterLink to="/orders">Mis Pedidos</RouterLink>
-      <RouterLink to="/about">Nosotros</RouterLink>
     </nav>
 
     <div class="header-actions">
