@@ -110,46 +110,63 @@ const handleSubmit = async () => {
 
 .checkout-grid {
     display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 2rem;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+}
+
+.checkout-form h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .checkout-form form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 2rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .form-group label {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-muted);
 }
 
 .submit-btn {
     margin-top: 1rem;
-    padding: 1rem;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+}
+
+.checkout-summary h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .checkout-items {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 1.5rem 0;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .checkout-item {
     display: flex;
     justify-content: space-between;
-    font-size: 0.875rem;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.checkout-item span:first-child {
     color: var(--text-muted);
 }
 
@@ -157,12 +174,17 @@ const handleSubmit = async () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 700;
+}
+
+.summary-total span:first-child {
+    font-weight: 600;
+    color: var(--text-muted);
 }
 
 .summary-total .price {
-    font-size: 1.5rem;
-    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main);
 }
 
 .error-msg {

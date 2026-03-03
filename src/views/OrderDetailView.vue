@@ -87,57 +87,68 @@ onMounted(() => {
 .detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 3rem;
 }
 
-.customer-info, .order-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.customer-info h2, .order-items h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .info-row {
-    font-size: 0.875rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .info-row strong {
     color: var(--text-muted);
-    width: 100px;
-    display: inline-block;
+    width: 120px;
 }
 
 .items-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 1rem 0;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .detail-item {
     display: flex;
     justify-content: space-between;
-    font-size: 0.875rem;
+    align-items: center;
 }
 
 .item-qty {
     color: var(--primary);
-    font-weight: 700;
-    margin-right: 0.5rem;
+    font-weight: 800;
+    margin-right: 0.75rem;
+}
+
+.item-name {
+    font-weight: 600;
 }
 
 .detail-total {
     margin-top: auto;
     border-top: 1px solid var(--glass-border);
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 700;
+}
+
+.detail-total span:first-child {
+    font-weight: 600;
+    color: var(--text-muted);
 }
 
 .total-price {
-    font-size: 1.5rem;
-    color: var(--primary);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-main);
 }
 
 @media (max-width: 1024px) {

@@ -86,53 +86,70 @@ const updateQuantity = (id, quantity) => {
 }
 
 .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--glass-border);
 }
 
-.cart-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
 .item-info h3 {
-    margin: 0;
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .item-price {
-    color: var(--accent);
+    color: var(--primary);
     font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .item-actions {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
 }
 
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 0.5rem;
-    padding: 0.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
 }
 
 .quantity-controls button {
-    padding: 0.25rem 0.75rem;
+    padding: 0.5rem 1rem;
     background: transparent;
     color: white;
+    font-size: 1.25rem;
+    border-radius: 0;
+}
+
+.quantity-controls button:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.quantity-controls span {
+    width: 40px;
+    text-align: center;
+    font-weight: 700;
 }
 
 .btn-remove {
     background: transparent;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 0;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.btn-remove:hover {
     color: #ef4444;
-    font-size: 0.875rem;
-    padding: 0.5rem;
 }
 
 .cart-summary {

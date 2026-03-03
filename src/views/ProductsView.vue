@@ -68,22 +68,37 @@ onMounted(() => {
                     :key="product.id" 
                     class="product-card glass-card"
                 >
+                    <div class="product-badge" v-if="product.stock < 5 && product.stock > 0">
+                        Últimas unidades
+                    </div>
+                    <div class="product-badge out" v-else-if="product.stock <= 0">
+                        Sin stock
+                    </div>
+
                     <div class="product-info">
-                        <div class="product-sku">{{ product.sku }}</div>
+                        <span class="product-sku">{{ product.sku }}</span>
                         <h3 class="product-name">{{ product.name }}</h3>
-                        <div class="product-stock" :class="{ 'low-stock': product.stock < 10 }">
-                            Stock: {{ product.stock }}
+                        
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="currency">$</span>
+                                <span class="amount">{{ Math.floor(product.price) }}</span>
+                                <span class="cents">.{{ (product.price % 1).toFixed(2).split('.')[1] }}</span>
+                            </div>
+                            <div class="stock-indicator">
+                                <span class="dot" :class="{ 'low': product.stock < 10 }"></span>
+                                {{ product.stock }} disponibles
+                            </div>
                         </div>
-                        <div class="product-footer">
-                            <span class="product-price">${{ product.price }}</span>
-                            <button 
-                                @click="addToCart(product)" 
-                                class="btn-primary"
-                                :disabled="product.stock <= 0"
-                            >
-                                {{ product.stock > 0 ? 'Añadir' : 'Agotado' }}
-                            </button>
-                        </div>
+
+                        <button 
+                            @click="addToCart(product)" 
+                            class="btn-primary buy-btn"
+                            :disabled="product.stock <= 0"
+                        >
+                            {{ product.stock > 0 ? 'Añadir al carrito' : 'Agotado' }}
+                            <span v-if="product.stock > 0">→</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -140,43 +155,101 @@ onMounted(() => {
 }
 
 .product-card {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100%;
+}
+
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.product-badge.out {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
 }
 
 .product-sku {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .product-name {
-    margin: 0.5rem 0;
-    font-size: 1.25rem;
+    margin: 0.75rem 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.product-stock {
-    font-size: 0.875rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-}
-
-.product-stock.low-stock {
-    color: #f59e0b;
-}
-
-.product-footer {
-    margin-top: auto;
+.product-meta {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    margin-bottom: 2rem;
 }
 
 .product-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-main);
+    display: flex;
+    align-items: flex-start;
+}
+
+.product-price .currency {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    color: var(--primary);
+}
+
+.product-price .amount {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.product-price .cents {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.stock-indicator {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.dot.low {
+    background: #f59e0b;
+    box-shadow: 0 0 10px #f59e0b;
+}
+
+.buy-btn {
+    width: 100%;
+    font-size: 0.9rem;
 }
 
 .loading-state, .empty-state {

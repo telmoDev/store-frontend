@@ -110,14 +110,14 @@ const getStatusClass = (status) => {
 
 .orders-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 2.5rem;
 }
 
 .order-card {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .order-header {
@@ -125,25 +125,27 @@ const getStatusClass = (status) => {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 0.75rem;
+    padding-bottom: 1.25rem;
 }
 
 .order-id {
-    font-weight: 700;
-    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
 }
 
 .order-status {
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 800;
     text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
 }
 
-.status-pending { background: #f59e0b; color: white; }
-.status-completed { background: var(--accent); color: white; }
-.status-cancelled { background: #ef4444; color: white; }
+.status-pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2); }
+.status-completed { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.status-cancelled { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
 
 .order-body {
     display: flex;
@@ -151,9 +153,20 @@ const getStatusClass = (status) => {
     align-items: flex-end;
 }
 
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .order-info p {
-    margin: 0.25rem 0;
-    font-size: 0.875rem;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.order-info strong {
+    color: var(--text-main);
 }
 
 .btn-secondary {
